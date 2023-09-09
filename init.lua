@@ -1,0 +1,2 @@
+require("notivee")
+print("hello")
