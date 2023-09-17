@@ -7,7 +7,6 @@ lsp.ensure_installed({
   'rust_analyzer',
   'clangd',
   'html',
-  'hls',
   'java_language_server',
   'lua_ls',
 })
