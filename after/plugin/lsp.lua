@@ -1,17 +1,5 @@
 local lsp = require("lsp-zero")
 
-local util = require 'lspconfig.util'
-
-require('lspconfig').prolog_ls.setup{
-    cmd = {"swipl",
-           "-g", "use_module(library(lsp_server)).",
-           "-g", "lsp_server:main",
-           "-t", "halt",
-           "--", "stdio"};
-    filetypes = {"prolog"};
-    root_dir = util.root_pattern("pack.pl");
-}
-
 lsp.preset("recommended")
 
 lsp.ensure_installed({
@@ -42,6 +30,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 lsp.setup_nvim_cmp({
   mapping = cmp_mappings
 })
+
 lsp.set_preferences({
     suggnst_lsp_servers = false,
     sign_icons = {
