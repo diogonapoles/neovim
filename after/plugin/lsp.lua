@@ -1,5 +1,17 @@
 local lsp = require("lsp-zero")
 
+local util = require 'lspconfig.util'
+
+require('lspconfig').prolog_ls.setup{
+    cmd = {"swipl",
+           "-g", "use_module(library(lsp_server)).",
+           "-g", "lsp_server:main",
+           "-t", "halt",
+           "--", "stdio"};
+    filetypes = {"prolog"};
+    root_dir = util.root_pattern("pack.pl");
+}
+
 lsp.preset("recommended")
 
 lsp.ensure_installed({
