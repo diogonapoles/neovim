@@ -1,5 +1,5 @@
 require("notivee.remap")
-require("notivee.set")
+require("notivee.settings")
 require("notivee.plugins")
 
 require('lspconfig/prolog_ls')
