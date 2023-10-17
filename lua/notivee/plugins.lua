@@ -42,5 +42,5 @@ return require('packer').startup(function(use)
 
   use 'numToStr/Comment.nvim'
 
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_command_for_global = 1 end })
 end)
