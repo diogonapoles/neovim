@@ -11,6 +11,7 @@ lsp.ensure_installed({
   -- 'lua_ls',
 })
 
+
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
@@ -55,6 +56,23 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
+
+local function organize_imports()
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = {vim.api.nvim_buf_get_name(0)},
+  }
+  vim.lsp.buf.execute_command(params)
+end
+
+require('lspconfig').tsserver.setup({
+  commands = {
+    OrganizeImports = {
+      organize_imports,
+      description = "Organize Imports"
+    }
+  }
+})
 
 lsp.setup()
 
