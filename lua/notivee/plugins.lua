@@ -46,4 +46,11 @@ return require('packer').startup(function(use)
 
   -- git integration
   use 'lewis6991/gitsigns.nvim'
+
+  -- Github copilot
+  use 'github/copilot.vim'
+  
+  use 'aklt/plantuml-syntax'
+
+  use 'mhartington/formatter.nvim'
 end)
