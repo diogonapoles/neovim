@@ -49,8 +49,10 @@ return require('packer').startup(function(use)
 
   -- Github copilot
   use 'github/copilot.vim'
-  
+
   use 'aklt/plantuml-syntax'
 
   use 'mhartington/formatter.nvim'
+
+  use {'akinsho/toggleterm.nvim', tag = '*'}
 end)
