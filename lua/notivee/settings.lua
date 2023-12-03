@@ -31,14 +31,14 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
-vim.opt.formatoptions:append { 'r' }
-vim.opt.iskeyword:append { '-' }
+vim.opt.formatoptions:append({ "r" })
+vim.opt.iskeyword:append({ "-" })
 
 vim.opt.updatetime = 50
 
 vim.api.nvim_create_autocmd("InsertLeave", {
-  pattern = '*',
-  command = "set nopaste"
+	pattern = "*",
+	command = "set nopaste",
 })
