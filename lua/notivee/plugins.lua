@@ -1,13 +1,27 @@
-vim.cmd [[packadd packer.nvim]]
+-- vim.cmd [[packadd packer.nvim]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-return require('packer').startup(function(use)
-  use ('wbthomason/packer.nvim')
-  use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.2',
-	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
-  }
-  use {
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+return require('lazy').setup({
+  {
+    'nvim-telescope/telescope.nvim', tag = '0.1.5',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+
+  {
     'sainnhe/gruvbox-material',
     config = function()
       vim.g.gruvbox_material_transparent_background = 1
@@ -16,43 +30,74 @@ return require('packer').startup(function(use)
       vim.g.gruvbox_material_ui_contrast = 'hard'
       vim.cmd('colorscheme gruvbox-material')
     end,
-  }
-  use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  use ('tpope/vim-fugitive')
-  use {
+  },
+
+  {
+    'nvim-treesitter/nvim-treesitter',
+    lazy = false,
+    version = nil,
+    build = ':TSUpdate'
+  },
+
+  {
+    'zbirenbaum/copilot.lua',
+    lazy = false
+  },
+
+  {
+    'zbirenbaum/copilot-cmp',
+    config = function ()
+      require("copilot_cmp").setup()
+    end
+  },
+
+
+  {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    requires = {
-      -- LSP Support
-      {'neovim/nvim-lspconfig'},             -- Required
-      {'williamboman/mason.nvim'},           -- Optional
-      {'williamboman/mason-lspconfig.nvim'}, -- Optional
+    branch = 'v3.x'
+  },
+  'neovim/nvim-lspconfig',
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim',
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-nvim-lsp',
+  'L3MON4D3/LuaSnip',
 
-      -- Autocompletion
-      {'hrsh7th/nvim-cmp'},     -- Required
-      {'hrsh7th/cmp-nvim-lsp'}, -- Required
-      {'L3MON4D3/LuaSnip'},     -- Required
-    }
-  }
-  use 'nvim-tree/nvim-web-devicons'
-  use 'nvim-tree/nvim-tree.lua'
+  'onsails/lspkind.nvim',
 
-  -- use {'akinsho/bufferline.nvim', tag = "v1.*", requires = 'nvim-tree/nvim-web-devicons'}
-  use 'hoob3rt/lualine.nvim'
+  'tpope/vim-fugitive',
 
-  use 'numToStr/Comment.nvim'
+  'nvim-tree/nvim-web-devicons',
+  'nvim-tree/nvim-tree.lua',
 
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_command_for_global = 1 end })
+  {
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons'
+  },
 
-  -- git integration
-  use 'lewis6991/gitsigns.nvim'
+  'hoob3rt/lualine.nvim',
+  'numToStr/Comment.nvim',
 
-  -- Github copilot
-  use 'github/copilot.vim'
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && npm install",
+    init =  function()
+      vim.g.mkdp_command_for_global = 1
+    end
+  },
 
-  use 'aklt/plantuml-syntax'
+  'lewis6991/gitsigns.nvim',
 
-  use 'mhartington/formatter.nvim'
+  'aklt/plantuml-syntax',
 
-  use {'akinsho/toggleterm.nvim', tag = '*'}
-end)
+  'mhartington/formatter.nvim',
+
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    config = true
+  },
+
+})

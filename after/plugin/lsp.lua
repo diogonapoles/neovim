@@ -2,18 +2,12 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
-lsp.ensure_installed({
-  -- 'tsserver',
-  -- 'rust_analyzer',
-  -- 'clangd',
-  -- 'html',
-  -- 'java_language_server',
-  -- 'lua_ls',
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  handlers = {
+    lsp.default_setup,
+  },
 })
-
-
--- Fix Undefined global 'vim'
-lsp.nvim_workspace()
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -28,8 +22,23 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   ["<C-Space>"] = cmp.mapping.complete(),
 })
 
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
+local cmp_sources = {
+  { name = 'nvim_lsp' },
+  { name = 'copilot' }
+}
+
+local lspkind = require('lspkind')
+cmp.setup({
+  mapping = cmp_mappings,
+  sources = cmp_sources,
+
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol_text',
+      maxwidth = 50,
+      symbol_map = { Copilot = "" },
+    })
+  }
 })
 
 lsp.set_preferences({
