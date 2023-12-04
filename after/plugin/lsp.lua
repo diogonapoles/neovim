@@ -54,6 +54,36 @@ lsp.set_preferences({
 lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
+	local picker = require("util.picker")
+	local extra = picker(
+		{
+			names = {
+				" Goto Declaration",
+				" Goto Type Definition",
+				" Incoming Calls",
+				"󰉺 View Implementations",
+				"⮌ View References",
+				"✚ Diagnostics to qflist",
+				"󰡱 Toggle Inlay-Hints",
+			},
+			lua_action = {
+				vim.lsp.buf.declaration,
+				vim.lsp.buf.type_definition,
+				vim.lsp.buf.incoming_calls,
+				vim.lsp.buf.implementation,
+				vim.lsp.buf.references,
+				vim.diagnostic.setqflist,
+				function()
+					vim.lsp.inlay_hint(bufnr)
+				end,
+			},
+		},
+		"LSP extra actions",
+		{
+			telescope_picker = "dropdown",
+		}
+	)
+
 	vim.keymap.set("n", "gd", function()
 		vim.lsp.buf.definition()
 	end, opts)
@@ -84,6 +114,7 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", function()
 		vim.lsp.buf.signature_help()
 	end, opts)
+	vim.keymap.set("n", "<leader>le", extra)
 end)
 
 local function organize_imports()

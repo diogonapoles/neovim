@@ -23,6 +23,11 @@ return require("lazy").setup({
 	},
 
 	{
+		"stevearc/dressing.nvim",
+		opts = {},
+	},
+
+	{
 		"sainnhe/gruvbox-material",
 		config = function()
 			vim.g.gruvbox_material_transparent_background = 1
