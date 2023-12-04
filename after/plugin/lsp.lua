@@ -134,6 +134,8 @@ require("lspconfig").tsserver.setup({
 	},
 })
 
+-- require("lspconfig").lua_ls.setup(require("lspconfig.lua_ls"))
+
 lsp.setup()
 
 vim.diagnostic.config({
