@@ -87,10 +87,11 @@ return require("lazy").setup({
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		build = "cd app && npm install",
+		build = "cd app && yarn install",
 		init = function()
 			vim.g.mkdp_command_for_global = 1
 		end,
+		ft = { "markdown", "plantuml" },
 	},
 
 	"lewis6991/gitsigns.nvim",
