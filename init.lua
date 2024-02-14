@@ -1,1 +1,2 @@
+-- init lua
 require("notivee")
