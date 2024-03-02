@@ -105,4 +105,6 @@ return require("lazy").setup({
 		version = "*",
 		config = true,
 	},
+
+	"lervag/vimtex",
 })

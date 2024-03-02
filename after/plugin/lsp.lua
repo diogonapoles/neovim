@@ -24,6 +24,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 
 local cmp_sources = {
 	{ name = "nvim_lsp" },
+	{ name = "omni" },
 	{ name = "copilot" },
 }
 

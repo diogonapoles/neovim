@@ -1,4 +1,6 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+
 vim.keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 vim.keymap.set("x", "J", ":m '>+1<CR>gv=gv")

@@ -21,6 +21,9 @@ formatter.setup({
 		cs = {
 			require("formatter.filetypes.cs").csharpier,
 		},
+		latex = {
+			require("formatter.filetypes.latex").latexindent,
+		},
 		javascript = {
 			require("formatter.filetypes.javascript").prettier,
 		},
