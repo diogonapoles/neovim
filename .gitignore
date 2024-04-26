@@ -2,4 +2,5 @@ plugin/packer_compiled.lua
 node_modules/
 yarn.lock
 .DS_Store
+.luarc.json
 lazy-lock.json

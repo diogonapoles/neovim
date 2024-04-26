@@ -1,2 +1,2 @@
--- init lua
-require("notivee")
+require("diogonapoles.core")
+require("diogonapoles.lazy")
