@@ -11,6 +11,20 @@ return {
 }
 
 -- return {
+-- 	"catppuccin/nvim",
+-- 	name = "catppuccin",
+-- 	priority = 1000,
+-- 	opts = {
+-- 		flavour = "mocha", -- latte, frappe, macchiato, mocha
+-- 		background = { -- :h background
+-- 			light = "latte",
+-- 			dark = "mocha",
+-- 		},
+-- 		transparent_background = true,
+-- 	},
+-- }
+
+-- return {
 -- 	"ellisonleao/gruvbox.nvim",
 -- 	priority = 1000,
 -- 	config = true,
@@ -25,10 +39,4 @@ return {
 -- 	version = false,
 -- 	lazy = false,
 -- 	priority = 1000,
--- 	-- Optional; default configuration will be used if setup isn't called.
--- 	config = function()
--- 		require("everforest").setup({
--- 			-- Your config here
--- 		})
--- 	end,
 -- }
