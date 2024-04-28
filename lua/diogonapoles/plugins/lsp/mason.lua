@@ -22,28 +22,34 @@ return {
 
 		mason_lspconfig.setup({
 			ensure_installed = {
-				"tsserver",
-				"html",
+				"angularls",
+				"clangd",
 				"cssls",
-				"tailwindcss",
-				"svelte",
-				"lua_ls",
 				"graphql",
+				"html",
+				"java_language_server",
+				"jsonls",
+				"lua_ls",
+				"omnisharp",
 				"prismals",
 				"pyright",
+				"svelte",
+				"tailwindcss",
+				"texlab",
+				"tsserver",
 			},
 		})
 
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"prettier", -- prettier formatter
-				"stylua", -- lua formatter
-				"isort", -- python formatter
 				"black", -- python formatter
-				"latexindent",
-				"csharpier",
-				"pylint",
-				"eslint_d",
+				"csharpier", -- C# formatter
+				"eslint_d", -- JavaScript/TypeScript linter
+				"isort", -- python formatter
+				"latexindent", -- LaTeX formatter
+				"pylint", -- python linter
+				"prettier", -- general code formatter
+				"stylua", -- lua formatter
 			},
 		})
 	end,

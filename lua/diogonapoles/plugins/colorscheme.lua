@@ -9,6 +9,14 @@ return {
 		vim.cmd("colorscheme gruvbox-material")
 	end,
 }
+-- return {
+-- 	"morhetz/gruvbox",
+-- 	priority = 1000,
+-- 	config = function()
+-- 		vim.g.gruvbox_transparent_bg = 1
+-- 		vim.cmd.colorscheme("gruvbox")
+-- 	end,
+-- }
 
 -- return {
 -- 	"catppuccin/nvim",
