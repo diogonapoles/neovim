@@ -13,13 +13,14 @@ opt.autoindent = true
 
 opt.wrap = false
 
--- search 
+-- search
 opt.ignorecase = true
 opt.smartcase = true
 
 opt.cursorline = true
 
 -- colors
+-- vim.cmd("colorscheme catppuccin-mocha")
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
