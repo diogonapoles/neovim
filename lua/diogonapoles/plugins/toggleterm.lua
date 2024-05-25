@@ -1,8 +1,8 @@
 return {
 	"akinsho/toggleterm.nvim",
-	version = "*",
+	ersion = "*",
 	opts = {
-		open_mapping = [[<c-\>]],
+		open_mapping = [[<c-T>]],
 		direction = "float",
 		auto_scroll = true,
 		float_opts = {
