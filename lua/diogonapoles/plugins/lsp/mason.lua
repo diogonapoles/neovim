@@ -23,6 +23,7 @@ return {
 		mason_lspconfig.setup({
 			ensure_installed = {
 				"angularls",
+				"gopls",
 				"clangd",
 				"cssls",
 				"graphql",
@@ -50,6 +51,8 @@ return {
 				"pylint", -- python linter
 				"prettier", -- general code formatter
 				"stylua", -- lua formatter
+				"gofumpt",
+				"golines",
 			},
 		})
 	end,
