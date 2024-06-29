@@ -21,7 +21,8 @@ return {
 	config = function()
 		local lualine = require("lualine")
 		local lazy_status = require("lazy.status") -- to configure lazy pending updates count
-		local theme = vim.fn.has("macunix") == 1 and "gruvbox-material" or "catppuccin-mocha"
+		-- local theme = vim.fn.has("macunix") == 1 and "gruvbox-material" or "catppuccin-mocha"
+		local theme = "gruvbox-material"
 
 		lualine.setup({
 			options = {
