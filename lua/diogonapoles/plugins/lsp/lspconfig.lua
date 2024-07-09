@@ -141,6 +141,13 @@ return {
 				})
 			end,
 
+			["java_language_server"] = function()
+				lspconfig["java_language_server"].setup({
+					capabilities = capabilities,
+					cmd = { "java-language-server" },
+				})
+			end,
+
 			["gopls"] = function()
 				lspconfig["gopls"].setup({
 					capabilities = capabilities,
